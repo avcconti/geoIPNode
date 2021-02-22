@@ -1,0 +1,17 @@
+{
+    "name": "geoip-lambda-maxmind",
+    "description": "Use maxmind database to geoIP with a NodeJS Lambda",
+    "version": "0.0.1",
+    "private": false,
+    "dependencies": {
+        "@maxmind/geoip2-node": "^2.0.1"
+    },
+    "devDependencies": {
+        "jest": "^26.6.3"
+    },
+    "scripts": {
+        "test": "jest",
+        "invoke": "sam local invoke --event event.json",
+        "deploy": "npm prune --production && zip function.zip * -r && aws lambda update-function-code --function-name geoIPNode --zip-file fileb://function.zip --profile personal && rm function.zip && npm install"
+    }
+}
